@@ -18,3 +18,17 @@
 - Разработка проекта - транзакция не будет выполнена пока не будут выполнены все условия предусмотренные в ходе разработки, а также учтенных изменений и дополнений.
 
 -- 3. Проанализировать несколько запросов с помощью EXPLAIN.
+## Запрос: выбрать среднию зарплату по отделам
+SELECT
+de.dept_no, AVG(salary)
+FROM 
+	employees e
+JOIN	
+	dept_emp d ON e.emp_no = d.emp_no
+JOIN
+	salaries s ON s.emp_no = e.emp_no
+JOIN
+	departments de ON de.dept_no = d.dept_no  
+GROUP BY
+	de.dept_no
+  
